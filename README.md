@@ -12,3 +12,5 @@ c control charts for the actual scores, lots of opportunities for it to occur.
 Use an Operating Characteristic Curve to get the probability for finding something wrong in the process for the scores after a given number.
 
 Cumulative sum (cusum) - to see if the process
+
+#TODO -- play with variable control limits
