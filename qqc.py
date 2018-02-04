@@ -9,7 +9,7 @@ r = robjects.r
 #R part
 robjects.r('''
 MyData <- read.csv(file="data_diana.csv", header = FALSE, sep = ",")
-myData <- MyData[1:2180,]
+myData <- MyData[1:1700,]
 
 #XBar Charts
 a <- myData$V3
@@ -25,17 +25,24 @@ q2 <- qcc(V3, type="S")
 #cusum
 q3 <- cusum(V3, decision.interval = 4, se.shift = 1 )
 
+#ewma
+q4 <- ewma(V3, lambda = 0.3, nsigmas=2)
+
  ''')
 
 #Look for the outliers for things because they mess up the rest of the model -- very important for cusum
 r_data = robjects.globalenv['q1']
 r.plot(r_data)
-time.sleep(1)
+time.sleep(20)
 
 r_dev = robjects.globalenv['q2']
 r.plot(r_dev)
-time.sleep(1)
+time.sleep(20)
 
 r_cusum = robjects.globalenv['q3']
 r.plot(r_cusum)
-time.sleep(60)
+time.sleep(20)
+
+r_ewma = robjects.globalenv['q4']
+r.plot(r_ewma)
+time.sleep(20)
