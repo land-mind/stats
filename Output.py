@@ -26,4 +26,8 @@ for list_keyword in list_list_keyword:
             #print(keyword['term'], keyword['relevance'])
 
 x = Counter(list_terms)
-print(x)
+list_x = x.most_common(30)
+with open("triggers.txt", 'a') as f:
+	for word in list_x:
+		f.write(word + "\n")
+		
