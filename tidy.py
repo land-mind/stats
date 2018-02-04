@@ -32,7 +32,7 @@ bad_count = Counter(bad_list)
 
 print(type(bad_count))
 
-good_freq = dict((item, num / len(good_count)) for item, num in good_count.most_common())
+good_freq = dict((item, num / (len(good_count)+len(bad_count))) for item, num in good_count.most_common())
 bad_freq = dict((item, num / len(bad_count)) for item, num in bad_count.most_common())
 
 
@@ -41,7 +41,9 @@ bad_freq = dict((item, num / len(bad_count)) for item, num in bad_count.most_com
 diff = {}
 for key, good_value in good_freq.items():
     if key in bad_freq:
-        diff[key] = np.log(bad_freq[key] / good_value)
+        diff[key] = np.log(bad_freq[key]/good_value)*bad_freq[key]
 
 tfidf = sorted(list(diff.items()), key = lambda x: -x[1])
-print(tfidf)
+
+for tup in tfidf:
+    print(tup[0])

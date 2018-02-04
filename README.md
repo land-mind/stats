@@ -14,3 +14,5 @@ Use an Operating Characteristic Curve to get the probability for finding somethi
 Cumulative sum (cusum) - to see if the process
 
 #TODO -- play with variable control limits
+
+The next step is to FIND THE trigger words
